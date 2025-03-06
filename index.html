@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>妇女节快乐</title>
     <style>
         /* 全局样式 */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* 使用渐变背景 */
             background: linear-gradient(135deg, #f9f0f6 0%, #ffc0cb 50%, #f9f0f6 100%);
             margin: 0;
             padding: 0;
@@ -25,19 +24,21 @@
         /* 标题样式 */
         h1 {
             color: #e84393;
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 2.5em; /* 调整字体大小以适应移动设备 */
+            margin-bottom: 15px; /* 调整间距 */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 1;
+            text-align: center; /* 标题居中 */
         }
 
         /* 祝福语样式 */
         p {
             color: #333;
-            font-size: 1.5em;
+            font-size: 1.2em; /* 调整字体大小以适应移动设备 */
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* 调整间距 */
             z-index: 1;
+            padding: 0 15px; /* 添加左右内边距 */
         }
 
         /* 按钮样式 */
@@ -45,8 +46,8 @@
             background-color: #e84393;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 12px 25px; /* 调整按钮内边距 */
+            font-size: 1em; /* 调整字体大小以适应移动设备 */
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -73,11 +74,11 @@
         /* 模态框内容样式 */
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
+            margin: 25% auto; /* 调整模态框垂直位置 */
+            padding: 15px; /* 调整内边距 */
             border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
+            width: 85%; /* 调整宽度 */
+            max-width: 400px;
             border-radius: 10px;
             position: relative;
         }
@@ -86,7 +87,7 @@
         .close {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 24px; /* 调整字体大小以适应移动设备 */
             font-weight: bold;
         }
 
@@ -106,8 +107,8 @@
         /* 爱心样式和动画 */
         .heart {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px; /* 调整爱心大小 */
+            height: 8px; /* 调整爱心大小 */
             background-color: #e84393;
             transform: rotate(-45deg);
             animation: fall 5s linear infinite, rotate 3s linear infinite alternate;
@@ -117,27 +118,27 @@
         .heart::after {
             content: '';
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px; /* 调整爱心大小 */
+            height: 8px; /* 调整爱心大小 */
             background-color: #e84393;
             border-radius: 50%;
         }
 
         .heart::before {
-            top: -5px;
+            top: -4px; /* 调整位置 */
             left: 0;
         }
 
         .heart::after {
-            left: 5px;
+            left: 4px; /* 调整位置 */
             top: 0;
         }
 
         /* 花朵样式和动画 */
         .flower {
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 12px; /* 调整花朵大小 */
+            height: 12px; /* 调整花朵大小 */
             background: url('https://cdn-icons-png.flaticon.com/512/1199/1199133.png') no-repeat center center;
             background-size: contain;
             animation: fall 6s linear infinite, scale 4s ease-in-out infinite alternate;
@@ -146,8 +147,8 @@
         /* 星星样式和动画 */
         .star {
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 3px; /* 调整星星大小 */
+            height: 3px; /* 调整星星大小 */
             background-color: #ffd700;
             border-radius: 50%;
             animation: fall 7s linear infinite, blink 1s ease-in-out infinite alternate;
@@ -192,11 +193,10 @@
 </head>
 
 <body>
-
-	<audio id="background-music" autoplay loop>
-        	<source src="BGM.mp3" type="audio/mpeg">
-        	您的浏览器不支持音频播放。
-    	</audio>
+    <audio id="background-music" loop>
+        <source src="BGM.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
 
     <!-- 动态爱心 -->
     <div class="heart" style="left: 10%; animation-duration: 4s;"></div>
@@ -223,7 +223,7 @@
 
     <h1>叶庭妤，妇女节快乐！</h1>
     <p>妇女节快乐呀，希望你天天开心不要有烦恼，虽然我不在你身边，但是我的心一直在你这边(*^▽^*)。</p>
-    <button onclick="openModal()">点我有惊喜</button>
+    <button onclick="openModal(); playMusic()">点我有惊喜</button>
 
     <!-- 模态框 -->
     <div id="myModal" class="modal">
@@ -236,6 +236,8 @@
     <script>
         // 获取模态框元素
         var modal = document.getElementById("myModal");
+        // 获取音频元素
+        var audio = document.getElementById("background-music");
 
         // 打开模态框的函数
         function openModal() {
@@ -245,6 +247,13 @@
         // 关闭模态框的函数
         function closeModal() {
             modal.style.display = "none";
+        }
+
+        // 播放音乐的函数
+        function playMusic() {
+            audio.play().catch(function (error) {
+                console.log('音频播放失败:', error);
+            });
         }
 
         // 当用户点击模态框外的区域时，关闭模态框
