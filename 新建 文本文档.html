@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妇女节快乐</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* 使用渐变背景 */
+            background: linear-gradient(135deg, #f9f0f6 0%, #ffc0cb 50%, #f9f0f6 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #e84393;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        /* 祝福语样式 */
+        p {
+            color: #333;
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        /* 按钮样式 */
+        button {
+            background-color: #e84393;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 1;
+        }
+
+        button:hover {
+            background-color: #d83a85;
+        }
+
+        /* 模态框背景样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* 模态框内容样式 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* 关闭按钮样式 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 图片样式 */
+        #modal-image {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* 爱心样式和动画 */
+        .heart {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #e84393;
+            transform: rotate(-45deg);
+            animation: fall 5s linear infinite, rotate 3s linear infinite alternate;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #e84393;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -5px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 5px;
+            top: 0;
+        }
+
+        /* 花朵样式和动画 */
+        .flower {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: url('https://cdn-icons-png.flaticon.com/512/1199/1199133.png') no-repeat center center;
+            background-size: contain;
+            animation: fall 6s linear infinite, scale 4s ease-in-out infinite alternate;
+        }
+
+        /* 星星样式和动画 */
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            animation: fall 7s linear infinite, blink 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(-45deg);
+            }
+            100% {
+                transform: rotate(45deg);
+            }
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+	<audio id="background-music" autoplay loop>
+        	<source src="BGM.mp3" type="audio/mpeg">
+        	您的浏览器不支持音频播放。
+    	</audio>
+
+    <!-- 动态爱心 -->
+    <div class="heart" style="left: 10%; animation-duration: 4s;"></div>
+    <div class="heart" style="left: 20%; animation-duration: 6s;"></div>
+    <div class="heart" style="left: 30%; animation-duration: 5s;"></div>
+    <div class="heart" style="left: 40%; animation-duration: 7s;"></div>
+    <div class="heart" style="left: 50%; animation-duration: 4.5s;"></div>
+    <div class="heart" style="left: 60%; animation-duration: 6.5s;"></div>
+    <div class="heart" style="left: 70%; animation-duration: 5.5s;"></div>
+    <div class="heart" style="left: 80%; animation-duration: 7.5s;"></div>
+    <div class="heart" style="left: 90%; animation-duration: 4.2s;"></div>
+
+    <!-- 动态星星 -->
+    <div class="star" style="left: 5%; animation-duration: 6s;"></div>
+    <div class="star" style="left: 12%; animation-duration: 8s;"></div>
+    <div class="star" style="left: 22%; animation-duration: 7s;"></div>
+    <div class="star" style="left: 32%; animation-duration: 9s;"></div>
+    <div class="star" style="left: 42%; animation-duration: 6.5s;"></div>
+    <div class="star" style="left: 52%; animation-duration: 8.5s;"></div>
+    <div class="star" style="left: 62%; animation-duration: 7.5s;"></div>
+    <div class="star" style="left: 72%; animation-duration: 9.5s;"></div>
+    <div class="star" style="left: 82%; animation-duration: 6.2s;"></div>
+    <div class="star" style="left: 92%; animation-duration: 8.2s;"></div>
+
+    <h1>叶庭妤，妇女节快乐！</h1>
+    <p>妇女节快乐呀，希望你天天开心不要有烦恼，虽然我不在你身边，但是我的心一直在你这边(*^▽^*)。</p>
+    <button onclick="openModal()">点我有惊喜</button>
+
+    <!-- 模态框 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-image" src="红包券.png" alt="恭喜获得红包一个">
+        </div>
+    </div>
+
+    <script>
+        // 获取模态框元素
+        var modal = document.getElementById("myModal");
+
+        // 打开模态框的函数
+        function openModal() {
+            modal.style.display = "block";
+        }
+
+        // 关闭模态框的函数
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // 当用户点击模态框外的区域时，关闭模态框
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
