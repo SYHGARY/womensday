@@ -90,6 +90,15 @@
             position: relative;
         }
 
+         #kitty-img {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: auto;
+            z-index: 1;
+        }
+        
         /* 关闭按钮样式 */
         .close {
             color: #aaa;
@@ -228,6 +237,8 @@
     <div class="star" style="left: 82%; animation-duration: 6.2s;"></div>
     <div class="star" style="left: 92%; animation-duration: 8.2s;"></div>
 
+    <img id="kitty-img" src="kitty.png" alt="Kitty猫">
+    
     <h1>叶庭妤，妇女节快乐！</h1>
     <p>妇女节快乐呀，希望你天天开心不要有烦恼，虽然我不在你身边，但是<span class="special-text">我的心一直在你这边(*^▽^*)。</span></p>
     <button onclick="openModal()">点我有惊喜</button>
