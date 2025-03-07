@@ -24,37 +24,30 @@
         /* 标题样式 */
         h1 {
             color: #e84393;
-            font-size: 2.5em;
-            margin-bottom: 15px;
+            font-size: 2.5em; /* 调整字体大小以适应移动设备 */
+            margin-bottom: 15px; /* 调整间距 */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 1;
-            text-align: center;
+            text-align: center; /* 标题居中 */
         }
 
         /* 祝福语样式 */
         p {
             color: #333;
-            font-size: 1.2em;
+            font-size: 1.2em; /* 调整字体大小以适应移动设备 */
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* 调整间距 */
             z-index: 1;
-            padding: 0 15px;
+            padding: 0 15px; /* 添加左右内边距 */
         }
 
-        .special-text {
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* 换一种有特色的字体 */
-            color: #ff69b4; /* 更鲜艳的颜色 */
-            font-size: 1.5em; /* 更大的字号 */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* 添加文字阴影 */
-        }
-        
         /* 按钮样式 */
         button {
             background-color: #e84393;
             color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 1em;
+            padding: 12px 25px; /* 调整按钮内边距 */
+            font-size: 1em; /* 调整字体大小以适应移动设备 */
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -81,28 +74,20 @@
         /* 模态框内容样式 */
         .modal-content {
             background-color: #fefefe;
-            margin: 25% auto;
-            padding: 15px;
+            margin: 25% auto; /* 调整模态框垂直位置 */
+            padding: 15px; /* 调整内边距 */
             border: 1px solid #888;
-            width: 85%;
+            width: 85%; /* 调整宽度 */
             max-width: 400px;
             border-radius: 10px;
             position: relative;
         }
 
-         #kitty-img {
-            position: relative;
-            width: 150px;
-            height: auto;
-            z-index: 1;
-            margin-bottom: 10px; /* 控制 Kitty 猫图片与 h1 之间的距离 */
-        }
-        
         /* 关闭按钮样式 */
         .close {
             color: #aaa;
             float: right;
-            font-size: 24px;
+            font-size: 24px; /* 调整字体大小以适应移动设备 */
             font-weight: bold;
         }
 
@@ -122,8 +107,8 @@
         /* 爱心样式和动画 */
         .heart {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 8px; /* 调整爱心大小 */
+            height: 8px; /* 调整爱心大小 */
             background-color: #e84393;
             transform: rotate(-45deg);
             animation: fall 5s linear infinite, rotate 3s linear infinite alternate;
@@ -133,27 +118,27 @@
         .heart::after {
             content: '';
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 8px; /* 调整爱心大小 */
+            height: 8px; /* 调整爱心大小 */
             background-color: #e84393;
             border-radius: 50%;
         }
 
         .heart::before {
-            top: -4px;
+            top: -4px; /* 调整位置 */
             left: 0;
         }
 
         .heart::after {
-            left: 4px;
+            left: 4px; /* 调整位置 */
             top: 0;
         }
 
         /* 花朵样式和动画 */
         .flower {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 12px; /* 调整花朵大小 */
+            height: 12px; /* 调整花朵大小 */
             background: url('https://cdn-icons-png.flaticon.com/512/1199/1199133.png') no-repeat center center;
             background-size: contain;
             animation: fall 6s linear infinite, scale 4s ease-in-out infinite alternate;
@@ -162,11 +147,20 @@
         /* 星星样式和动画 */
         .star {
             position: absolute;
-            width: 3px;
-            height: 3px;
+            width: 3px; /* 调整星星大小 */
+            height: 3px; /* 调整星星大小 */
             background-color: #ffd700;
             border-radius: 50%;
             animation: fall 7s linear infinite, blink 1s ease-in-out infinite alternate;
+        }
+
+        /* Kitty 猫图片样式，可根据需要调整位置和大小 */
+        #kitty-img {
+            position: relative;
+            width: 150px;
+            height: auto;
+            z-index: 1;
+            margin-bottom: 10px; /* 控制 Kitty 猫图片与 h1 之间的距离 */
         }
 
         @keyframes fall {
@@ -236,11 +230,11 @@
     <div class="star" style="left: 82%; animation-duration: 6.2s;"></div>
     <div class="star" style="left: 92%; animation-duration: 8.2s;"></div>
 
+    <!-- 添加 Kitty 猫图片 -->
     <img id="kitty-img" src="kitty.png" alt="Kitty猫">
-    
     <h1>叶庭妤，妇女节快乐！</h1>
     <p>妇女节快乐呀，希望你天天开心不要有烦恼，虽然我不在你身边，但是<span class="special-text">我的心一直在你这边(*^▽^*)。</span></p>
-    <button onclick="openModal()">点我有惊喜</button>
+    <button onclick="openModal(); playMusic()">点我有惊喜</button>
 
     <!-- 模态框 -->
     <div id="myModal" class="modal">
@@ -256,26 +250,6 @@
         // 获取音频元素
         var audio = document.getElementById("background-music");
 
-        // 尝试自动播放音频
-        function tryPlayAudio() {
-            audio.play().then(() => {
-                // 播放成功
-            }).catch((error) => {
-                // 播放失败，可能是因为用户未交互
-                document.addEventListener('touchstart', function playOnFirstInteraction() {
-                    audio.play().then(() => {
-                        // 播放成功，移除事件监听器
-                        document.removeEventListener('touchstart', playOnFirstInteraction);
-                    }).catch((error) => {
-                        console.log('音频播放失败:', error);
-                    });
-                });
-            });
-        }
-
-        // 页面加载完成后尝试播放音频
-        window.addEventListener('load', tryPlayAudio);
-
         // 打开模态框的函数
         function openModal() {
             modal.style.display = "block";
@@ -284,6 +258,13 @@
         // 关闭模态框的函数
         function closeModal() {
             modal.style.display = "none";
+        }
+
+        // 播放音乐的函数
+        function playMusic() {
+            audio.play().catch(function (error) {
+                console.log('音频播放失败:', error);
+            });
         }
 
         // 当用户点击模态框外的区域时，关闭模态框
